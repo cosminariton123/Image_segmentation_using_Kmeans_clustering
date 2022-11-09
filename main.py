@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
-from PIL import Image
 
 if __name__ == '__main__':
     nivel_artistic = input("Introdu nivelul artistic dorit (intre 0 si 255) ")
@@ -11,10 +10,9 @@ if __name__ == '__main__':
 
     nivel_artistic = 255 - nivel_artistic
 
-    imagine = Image.open("imagine.jpg")
-    size = imagine.size
+    imagine = plt.imread("imagine.jpg")
+    size = imagine.shape
     imagine = np.array(imagine)
-
 
     imagine = imagine.reshape(size[0] * size[1], 3)
 
@@ -29,6 +27,6 @@ if __name__ == '__main__':
     imagine_noua = np.array([dictionar_medii[elem] for elem in labels])
 
     plt.title("Arta contemporana\nculori folosite: " + str(nivel_artistic))
-    imagine_noua = imagine_noua.reshape(size[1], size[0], 3)
+    imagine_noua = imagine_noua.reshape(size[0], size[1], 3)
     plt.imshow(np.uint8(imagine_noua))
     plt.show()
