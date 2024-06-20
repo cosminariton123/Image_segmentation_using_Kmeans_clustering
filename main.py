@@ -30,3 +30,4 @@ if __name__ == '__main__':
     imagine_noua = imagine_noua.reshape(size[0], size[1], 3)
     plt.imshow(np.uint8(imagine_noua))
     plt.show()
+    plt.imsave(f"segmented_image_with_{nivel_artistic}_colors.jpg", np.uint8(imagine_noua))
